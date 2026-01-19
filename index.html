@@ -78,15 +78,43 @@
     <h2>Be Part of the Future of Payments</h2>
     <p>Join early access and help shape NilPay.</p>
 
-    <form class="waitlist-form" id="waitlistForm" novalidate>
-      <input type="email" id="emailInput" placeholder="Enter your email" required aria-label="Email address" />
-      <button type="submit" aria-label="Join the waitlist">Join Waitlist</button>
-    </form>
-    <p id="formMessage" style="margin-top: 1rem; display: none;"></p>
+    <!-- Mailchimp Form - Replace FORM_ID with your Mailchimp form ID -->
+    <div id="mc_embed_shell">
+      <link href="//cdn-images.mailchimp.com/embedcode/classic/css/mc-validate.css" rel="stylesheet" type="text/css">
+      <style type="text/css">
+        #mc_embed_signup{background:#0F172A; false;color:#0F172A; font-size:15px; }
+        #mc_embed_signup .asterisk {color:#FF6B6B; font-size:150%;}
+        #mc_embed_signup .mc-field-group { margin-bottom: 15px; }
+        #mc_embed_signup input.email { display: block; padding: 8px 0; text-indent: 5px; width: 100%; text-align: left; }
+        #mc_embed_signup label { display: block; }
+        #mc_embed_signup form { padding: 20px 0; text-align: center; }
+        #mc_embed_signup .mc-field-group input { width: 260px; padding: 0.8rem; border-radius: 8px; border: none; }
+        #mc_embed_signup .button { background: #2EB872; color: white; padding: 0.8rem 1.4rem; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; width: auto; }
+        #mc_embed_signup .button:hover { background: #27A366; }
+        #mc_embed_signup .response { color: #2EB872; margin-top: 1rem; }
+        #mc_embed_signup .error_response { color: #FCA5A5; margin-top: 1rem; }
+      </style>
+      <form class="waitlist-form" action="https://nilpay.us21.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID&amp;f_id=YOUR_FORM_ID" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+        <div id="mc_embed_signup_scroll">
+          <div class="mc-field-group">
+            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" aria-label="Email address" placeholder="Enter your email" />
+          </div>
+          <div hidden=""><input type="hidden" name="tags" value="5" /></div>
+          <div id="mce-responses" class="response">
+            <div class="response" id="mce-error-response" style="display: none;"></div>
+            <div class="response" id="mce-success-response" style="display: none;"></div>
+          </div>
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_YOUR_USER_ID_YOUR_LIST_ID" tabindex="-1" value="" /></div>
+          <div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join Waitlist" /></div>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
   </section>
 
   <!-- FOOTER -->
-  <footer>loading="lazy" />
+  <footer>
+    <img src="assets/nilpay-logo.jpeg" alt="NilPay Logo" loading="lazy" />
     <p>© 2026 NilPay. All rights reserved.</p>
   </footer>
 
@@ -105,48 +133,28 @@
       });
     });
 
-    // Waitlist form handling
-    const waitlistForm = document.getElementById('waitlistForm');
-    const emailInput = document.getElementById('emailInput');
-    const formMessage = document.getElementById('formMessage');
-
-    if (waitlistForm) {
-      waitlistForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = emailInput.value.trim();
-
-        if (!email || !isValidEmail(email)) {
-          showMessage('Please enter a valid email address.', 'error');
-          return;
-        }
-
-        // Save email to localStorage
-        let emails = JSON.parse(localStorage.getItem('nilpay-waitlist') || '[]');
-        if (!emails.includes(email)) {
-          emails.push(email);
-          localStorage.setItem('nilpay-waitlist', JSON.stringify(emails));
-          showMessage('✓ Thanks for joining! Check your email for updates.', 'success');
-          emailInput.value = '';
-        } else {
-          showMessage('You\'re already on the waitlist!', 'info');
-        }
-      });
-    }
-
-    function isValidEmail(email) {
+    // Mailchimp form validation
+    function validateEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    function showMessage(text, type) {
-      formMessage.textContent = text;
-      formMessage.className = 'form-message ' + type;
-      formMessage.style.display = 'block';
-      setTimeout(() => {
-        formMessage.style.display = 'none';
-      }, 5000);
+    // Get form and input
+    const mcForm = document.getElementById('mc-embedded-subscribe-form');
+    const emailInput = document.getElementById('mce-EMAIL');
+
+    if (mcForm && emailInput) {
+      mcForm.addEventListener('submit', function(e) {
+        const email = emailInput.value.trim();
+        if (!email || !validateEmail(email)) {
+          e.preventDefault();
+          const errorDiv = document.getElementById('mce-error-response');
+          errorDiv.textContent = 'Please enter a valid email address.';
+          errorDiv.style.display = 'block';
+          return false;
+        }
+      });
     }
-  </script026 NilPay. All rights reserved.</p>
-  </footer>
+  </script>
 
 </body>
 </html>
