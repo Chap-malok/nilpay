@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NilPay unifies DigiCash, MoMo, and bank payments into one secure wallet built for South Sudan. Join our waitlist for early access." />
+  <meta name="keywords" content="NilPay, mobile wallet, payments, South Sudan, DigiCash, MoMo, fintech" />
+  <meta name="theme-color" content="#0A3D91" />
+  <meta property="og:title" content="NilPay – One Wallet. Every Network." />
+  <meta property="og:description" content="The unified payment wallet for South Sudan. Access DigiCash, MoMo, and banks in one secure app." />
+  <meta property="og:type" content="website" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <title>NilPay – One Wallet. Every Network.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <img src="assets/nilpay-logo.jpeg" alt="NilPay Logo" class="logo" loading="lazy" />
+    <a href="#waitlist" class="btn-outline">Join Waitlist</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>One Wallet. Every Network.</h1>
+      <p>
+        NilPay unifies DigiCash, MoMo, and bank payments into one secure wallet —
+        built for South Sudan.
+      </p>
+      <div class="cta-group">
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+        <a href="#features" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <h2>Why NilPay?</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Multi-Network Wallet</h3>
+        <p>Access DigiCash, MoMo, and banks in one app.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Instant Transfers</h3>
+        <p>Send and receive money across networks instantly.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Merchant Ready</h3>
+        <p>Accept payments from any customer, any network.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Built for South Sudan</h3>
+        <p>Designed for local infrastructure and real-world use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Connect your mobile money or bank account</li>
+      <li>Convert funds into your NilPay wallet</li>
+      <li>Send, receive, or pay anyone instantly</li>
+    </ol>
+  </section>
+
+  <!-- CTA -->
+  <section id="waitlist" class="final-cta">
+    <h2>Be Part of the Future of Payments</h2>
+    <p>Join early access and help shape NilPay.</p>
+
+    <form class="waitlist-form" id="waitlistForm" novalidate>
+      <input type="email" id="emailInput" placeholder="Enter your email" required aria-label="Email address" />
+      <button type="submit" aria-label="Join the waitlist">Join Waitlist</button>
+    </form>
+    <p id="formMessage" style="margin-top: 1rem; display: none;"></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>loading="lazy" />
+    <p>© 2026 NilPay. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Waitlist form handling
+    const waitlistForm = document.getElementById('waitlistForm');
+    const emailInput = document.getElementById('emailInput');
+    const formMessage = document.getElementById('formMessage');
+
+    if (waitlistForm) {
+      waitlistForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+
+        if (!email || !isValidEmail(email)) {
+          showMessage('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        // Save email to localStorage
+        let emails = JSON.parse(localStorage.getItem('nilpay-waitlist') || '[]');
+        if (!emails.includes(email)) {
+          emails.push(email);
+          localStorage.setItem('nilpay-waitlist', JSON.stringify(emails));
+          showMessage('✓ Thanks for joining! Check your email for updates.', 'success');
+          emailInput.value = '';
+        } else {
+          showMessage('You\'re already on the waitlist!', 'info');
+        }
+      });
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showMessage(text, type) {
+      formMessage.textContent = text;
+      formMessage.className = 'form-message ' + type;
+      formMessage.style.display = 'block';
+      setTimeout(() => {
+        formMessage.style.display = 'none';
+      }, 5000);
+    }
+  </script026 NilPay. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
