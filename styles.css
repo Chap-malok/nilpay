@@ -457,3 +457,239 @@ footer p {
     height: 28px;
   }
 }
+
+/* SECURITY & COMPLIANCE SECTION */
+.security-section {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0f4ff 100%);
+}
+
+.security-section h2 {
+  text-align: center;
+  color: var(--blue);
+  margin-bottom: 3rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.security-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
+  border-left: 4px solid var(--green);
+}
+
+.security-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.security-card h3 {
+  color: var(--blue);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.security-card p {
+  color: #64748B;
+  line-height: 1.7;
+}
+
+/* PRICING SECTION */
+.pricing-section {
+  padding: 3rem 2rem;
+  background: white;
+}
+
+.pricing-section h2 {
+  text-align: center;
+  color: var(--blue);
+  margin-bottom: 3rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f4ff 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.pricing-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(46, 184, 114, 0.1);
+}
+
+.pricing-card.featured {
+  border-color: var(--green);
+  box-shadow: 0 8px 24px rgba(46, 184, 114, 0.15);
+  transform: scale(1.05);
+}
+
+.pricing-card h3 {
+  color: var(--blue);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.pricing-card .price {
+  color: var(--green);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card .description {
+  color: #64748B;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* TEAM SECTION */
+.team-section {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0f4ff 100%);
+}
+
+.team-section h2 {
+  text-align: center;
+  color: var(--blue);
+  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.team-intro {
+  text-align: center;
+  color: #64748B;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-member {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.member-avatar {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.team-member h3 {
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.team-member .title {
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.team-member .bio {
+  color: #64748B;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* FOOTER LINKS */
+.footer-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  color: var(--green);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+
+/* RESPONSIVE - SECURITY & PRICING */
+@media (max-width: 768px) {
+  .security-section,
+  .pricing-section,
+  .team-section {
+    padding: 2rem 1rem;
+  }
+
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  .footer-links {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .team-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .security-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .member-avatar {
+    font-size: 2.5rem;
+  }
+}
